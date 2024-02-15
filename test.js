@@ -1,5 +1,9 @@
-function raft(N, K, weights) {
+function raft(input) {
+    const N = input[0].split(" ")[0];
+    const K = input[0].split(" ")[1];
+    const weights = input[1].split(" ");
     weights.sort((a, b) => b - a);
+
     let minCapacity = weights[0];
     let weightsCopy = [];
     let boolean = true;
@@ -7,7 +11,7 @@ function raft(N, K, weights) {
     let sum = 0;
 
     for (let i = 0; i < N; i++) {
-        weightsCopy.push(weights[i])
+        weightsCopy.push(Number(weights[i]))
     }
     weightsCopy.sort((a, b) => b - a);
 
@@ -37,7 +41,7 @@ function raft(N, K, weights) {
             if (times > K && boolean) {
                 weightsCopy = [];
                 for (let i = 0; i < weights.length; i++) {
-                    weightsCopy.push(weights[i])
+                    weightsCopy.push(Number(weights[i]))
                 }
                 weightsCopy.sort((a, b) => b - a);
                 minCapacity++;
@@ -53,11 +57,4 @@ function raft(N, K, weights) {
     }
 }
 
-// let N = 26;
-// let K = 5;
-// let weights = [52, 17946, 27160, 387, 17346, 27505, 20816, 20577, 10961, 6021, 5262, 28278, 24163, 931, 11003, 19738, 17914, 1683, 10320, 10475];
- let N = 7;
- let K = 2;
- let weights = [2, 15, 20, 5, 8, 10, 12];
-
-raft(N, K, weights);
+raft(["20 3", "52 17946 27160 387 17346 27505 20816 20577 10961 6021 5262 28278 24163 931 11003 19738 17914 1683 10320 10475"]);
