@@ -3,8 +3,14 @@ function raft(input) {
     const K = input[0].split(" ")[1];
     const weights = input[1].split(" ");
     weights.sort((a, b) => b - a);
-    if (N < 1 || N > 1000 || K < 1 || K > 1000 || weights.length > 100000 || weights.length < 1) {
+    if (N < 1 || N > 1000 || K < 1 || K > 1000) {
         return console.log("Error");
+    }
+
+    for (let m = 0; m < weights.length; m++) {
+        if (weights[m] > 100000 || weights[m] < 1) {
+            return console.log("Error");
+        }
     }
 
     let minCapacity = weights[0];
@@ -60,4 +66,5 @@ function raft(input) {
     }
 }
 
+// raft(["20 3", "52 17946 27160 387 17346 27505 20816 20577 10961 6021 5262 28278 24163 931 11003 19738 17914 1683 10320 10475"]);
 raft(["20 3", "52 17946 27160 387 17346 27505 20816 20577 10961 6021 5262 28278 24163 931 11003 19738 17914 1683 10320 10475"]);
