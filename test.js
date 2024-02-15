@@ -3,6 +3,9 @@ function raft(input) {
     const K = input[0].split(" ")[1];
     const weights = input[1].split(" ");
     weights.sort((a, b) => b - a);
+    if (N < 1 || N > 1000 || K < 1 || K > 1000 || weights.length > 100000 || weights.length < 1) {
+        return console.log("Error");
+    }
 
     let minCapacity = weights[0];
     let weightsCopy = [];
@@ -11,7 +14,7 @@ function raft(input) {
     let sum = 0;
 
     for (let i = 0; i < N; i++) {
-        weightsCopy.push(Number(weights[i]))
+        weightsCopy.push(Number(weights[i]));
     }
     weightsCopy.sort((a, b) => b - a);
 
@@ -41,7 +44,7 @@ function raft(input) {
             if (times > K && boolean) {
                 weightsCopy = [];
                 for (let i = 0; i < weights.length; i++) {
-                    weightsCopy.push(Number(weights[i]))
+                    weightsCopy.push(Number(weights[i]));
                 }
                 weightsCopy.sort((a, b) => b - a);
                 minCapacity++;
@@ -49,7 +52,7 @@ function raft(input) {
             }
 
             if (weightsCopy.length == 0) {
-                console.log(minCapacity)
+                console.log(minCapacity);
                 boolean = false;
                 break;
             }
